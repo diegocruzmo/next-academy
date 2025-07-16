@@ -1,13 +1,13 @@
-//import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { infoCourses } from "@/services/courses";
-//import { Courses } from "@/types/Courses";
+import { Course } from "@prisma/client";
 
 function useGetInfoCourses() {
-  const { data, isPending, error } = useQuery({
-    queryKey: ["courses"],
-    queryFn: infoCourses,
-  });
+  const { data, isPending, error }: UseQueryResult<{ data: Course[] }, Error> =
+    useQuery({
+      queryKey: ["courses"],
+      queryFn: infoCourses,
+    });
 
   const courses = data ?? [];
 

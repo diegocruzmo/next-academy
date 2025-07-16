@@ -1,12 +1,13 @@
+import { formSchema } from "@/app/(routes)/teacher/components/Header/FormCreateCourse/FormCreateCourse.form";
 import { createCourse } from "@/services/courses";
-import { CreateCourse } from "@/types/Courses";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import z from "zod";
 
 function useCreateCourses() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (values: CreateCourse) => createCourse(values),
+    mutationFn: (values: z.infer<typeof formSchema>) => createCourse(values),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["courses"] });
     },

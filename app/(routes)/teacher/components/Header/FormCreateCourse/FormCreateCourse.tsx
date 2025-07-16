@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,10 +16,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 
 import useCreateCourses from "@/hooks/useCreateCourse";
 
 export const FormCreateCourse = () => {
+  const router = useRouter();
   const { mutateAsync: createCourse } = useCreateCourses();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -28,11 +32,13 @@ export const FormCreateCourse = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await createCourse(values);
-
     try {
+      const res = await createCourse(values);
+      toast("Course created successfully!");
+      router.push(`/teacher/courses/${res.data.id}`);
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong!");
     }
   }
 

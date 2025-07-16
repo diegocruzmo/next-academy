@@ -2,9 +2,11 @@
 import useInfoCourses from "@/hooks/useInfoCourses";
 
 export const Courses = () => {
-  const { courses, isPending, error } = useInfoCourses();
+  const { courses, isPending } = useInfoCourses();
 
-  console.log(courses, isPending, error);
+  if (isPending) return <div>Loading...</div>;
+
+  console.log(courses);
 
   return <div>Courses</div>;
 };

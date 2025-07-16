@@ -1,9 +1,9 @@
 import { formSchema } from "@/app/(routes)/teacher/components/Header/FormCreateCourse/FormCreateCourse.form";
 import api from "@/lib/axios";
-import { Course, Courses } from "@/types/Courses";
+import { Course } from "@prisma/client";
 import z from "zod";
 
-export const infoCourses = async (): Promise<{ data: Courses }> => {
+export const infoCourses = async (): Promise<{ data: Course[] }> => {
   try {
     const response = await api.get("/api/course");
     return {
