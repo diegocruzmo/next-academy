@@ -9,7 +9,7 @@ function useGetInfoCourses() {
       queryFn: infoCourses,
     });
 
-  const courses = data ?? [];
+  const courses = data?.data ?? [];
 
   return { isPending, error, courses };
 }

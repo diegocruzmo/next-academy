@@ -1,12 +1,18 @@
 "use client";
 import useInfoCourses from "@/hooks/useInfoCourses";
+import { CourseCard } from "./CourseCard";
 
 export const Courses = () => {
   const { courses, isPending } = useInfoCourses();
 
   if (isPending) return <div>Loading...</div>;
+  if (courses.length === 0) return <div>Not Courses Found</div>;
 
-  console.log(courses);
-
-  return <div>Courses</div>;
+  return (
+    <div className="flex flex-col my-4 mx-6 border rounded-md p-4 gap-10">
+      {courses.map((course) => (
+        <CourseCard key={course.id} course={course} />
+      ))}
+    </div>
+  );
 };
