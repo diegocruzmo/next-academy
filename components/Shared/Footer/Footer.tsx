@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="py-4 px-6 border-t bg-sky-200 w-full">
-      <div className="flex justify-between items-center text-sm text-slate-700">
+    <footer className="py-4 px-6 border-t w-full">
+      <div className="flex justify-between items-center text-sm">
         <p>2025@Academy</p>
 
         <div className="flex gap-4 items-center">

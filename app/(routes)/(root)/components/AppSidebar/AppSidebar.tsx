@@ -25,30 +25,21 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="bg-sky-100">
+      <SidebarHeader>
         <Link href="/" className="flex items-center gap-2">
           <Image src="/icon.png" alt="logo" width={36} height={36} />
-          {state.open && (
-            <span className="text-xl font-semibold text-slate-800">
-              Academy
-            </span>
-          )}
+          {state.open && <span className="text-xl font-semibold">Academy</span>}
         </Link>
       </SidebarHeader>
-      <SidebarContent className="bg-sky-100">
+      <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Platform</SidebarGroupLabel>
           <SidebarMenu className="space-y-2">
             <SidebarMenuItem>
               {routesPlatform.map(({ title, url, icon }) => (
                 <SidebarMenuButton className="mb-2" key={title} asChild>
-                  <Link
-                    href={url}
-                    className="hover:bg-sky-200 flex items-center gap-2"
-                  >
-                    <div className="p-1 rounded-md text-white bg-sky-600">
-                      {icon}
-                    </div>
+                  <Link href={url} className="flex items-center gap-2">
+                    <div className="p-1 rounded-md">{icon}</div>
                     <span>{title}</span>
                   </Link>
                 </SidebarMenuButton>
@@ -64,11 +55,9 @@ export function AppSidebar() {
                   <SidebarMenuSubItem className="mb-2" key={title}>
                     <SidebarMenuSubButton
                       href={url}
-                      className="hover:bg-sky-200 flex items-center gap-2"
+                      className="flex items-center gap-2"
                     >
-                      <div className="p-1 rounded-md bg-sky-700 text-white">
-                        {icon}
-                      </div>
+                      <div className="p-1 rounded-md">{icon}</div>
                       <span>{title}</span>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
