@@ -15,7 +15,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+import useCreateCourses from "@/hooks/useCreateCourse";
+
 export const FormCreateCourse = () => {
+  const { mutateAsync: createCourse } = useCreateCourses();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -25,10 +28,9 @@ export const FormCreateCourse = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    await createCourse(values);
 
     try {
-      console.log();
     } catch (error) {
       console.log(error);
     }

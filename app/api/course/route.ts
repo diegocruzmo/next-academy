@@ -26,3 +26,24 @@ export async function POST(req: Request) {
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
+
+export async function GET() {
+  try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const courses = await prisma.course.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+    return NextResponse.json(courses);
+  } catch (error) {
+    console.log("[COURSES]", error);
+    return new NextResponse("Internal Server Error", { status: 500 });
+  }
+}

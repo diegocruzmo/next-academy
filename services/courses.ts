@@ -1,25 +1,26 @@
+import { formSchema } from "@/app/(routes)/teacher/components/Header/FormCreateCourse/FormCreateCourse.form";
 import api from "@/lib/axios";
-// import { InfoCategories } from "@/types/Categories";
+import { Course, Courses } from "@/types/Courses";
+import z from "zod";
 
-// export const infoCategories = async (): Promise<InfoCategories> => {
-/*
-export const infoCourses = async () => {
+export const infoCourses = async (): Promise<{ data: Courses }> => {
   try {
-    const response = await api.get("/api/courses");
+    const response = await api.get("/api/course");
     return {
-      data: response,
+      data: response.data,
     };
   } catch (error) {
     throw error;
   }
 };
-*/
 
-export const createCourse = async (data: any) => {
+export const createCourse = async (
+  values: z.infer<typeof formSchema>
+): Promise<{ data: Course }> => {
   try {
-    const response = await api.post("/api/courses", data);
+    const response = await api.post("/api/course", values);
     return {
-      data: response,
+      data: response.data,
     };
   } catch (error) {
     throw error;
