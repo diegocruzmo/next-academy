@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="flex justify-between items-center text-sm">
         <p>2025@Academy</p>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center ml-6">
           <Link href={"/privacy-policy"} className={"hover:underline"}>
             Privacy Policy
           </Link>

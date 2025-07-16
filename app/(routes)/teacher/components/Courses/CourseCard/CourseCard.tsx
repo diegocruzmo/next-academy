@@ -20,7 +20,7 @@ export const CourseCard = (props: CourseCardProps) => {
             alt={title}
             width={150}
             height={150}
-            className="rounded-md max-w-52"
+            className="rounded-md max-w-52 m-auto"
           />
           <div>
             <div className="flex flex-row items-center gap-2">
