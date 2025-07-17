@@ -5,7 +5,7 @@ import { Course } from "@prisma/client";
 function useGetInfoCourses() {
   const { data, isPending, error }: UseQueryResult<{ data: Course[] }, Error> =
     useQuery({
-      queryKey: ["courses"],
+      queryKey: ["get-courses"],
       queryFn: infoCourses,
     });
 

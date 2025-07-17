@@ -1,11 +1,12 @@
 "use client";
 import useInfoCourses from "@/hooks/useInfoCourses";
 import { CourseCard } from "./CourseCard";
+import { SkeletonCard } from "@/components/Shared";
 
 export const Courses = () => {
   const { courses, isPending } = useInfoCourses();
 
-  if (isPending) return <div>Loading...</div>;
+  if (isPending) return <SkeletonCard count={3} />;
   if (courses.length === 0) return <div>Not Courses Found</div>;
 
   return (

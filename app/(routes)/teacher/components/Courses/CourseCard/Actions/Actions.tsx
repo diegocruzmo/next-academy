@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Edit, Trash } from "lucide-react";
 import { ActionsProps } from "./Actions.types";
 
@@ -17,12 +19,31 @@ import {
 
 import { Button } from "@/components/ui/button";
 
+import useDeleteCourse from "@/hooks/useDeleteCourse";
+
 export const Actions = (props: ActionsProps) => {
+  const router = useRouter();
   const { courseId } = props;
-  console.log(courseId);
+
+  const { mutateAsync: deleteCourse } = useDeleteCourse();
+
+  const handleEdit = () => {
+    router.push(`/teacher/${courseId}`);
+  };
+
+  const handleDelete = async () => {
+    await deleteCourse(courseId);
+    router.refresh();
+  };
+
   return (
     <div className="flex flex-col gap-2 items-center w-full lg:max-w-42">
-      <Button className="w-full" variant={"outline"} size={"sm"}>
+      <Button
+        className="w-full"
+        variant={"outline"}
+        size={"sm"}
+        onClick={handleEdit}
+      >
         Edit <Edit className="w-4 h-4" />
       </Button>
 
@@ -42,7 +63,9 @@ export const Actions = (props: ActionsProps) => {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction onClick={handleDelete}>
+              Continue
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

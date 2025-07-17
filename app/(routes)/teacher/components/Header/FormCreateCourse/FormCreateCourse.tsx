@@ -18,11 +18,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
-import useCreateCourses from "@/hooks/useCreateCourse";
+import useCreateCourse from "@/hooks/useCreateCourse";
 
 export const FormCreateCourse = () => {
   const router = useRouter();
-  const { mutateAsync: createCourse } = useCreateCourses();
+  const { mutateAsync: createCourse } = useCreateCourse();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

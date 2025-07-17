@@ -14,11 +14,33 @@ export const infoCourses = async (): Promise<{ data: Course[] }> => {
   }
 };
 
+export const infoCourse = async (id: string): Promise<{ data: Course }> => {
+  try {
+    const response = await api.get(`/api/course/${id}`);
+    return {
+      data: response.data,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const createCourse = async (
   values: z.infer<typeof formSchema>
 ): Promise<{ data: Course }> => {
   try {
     const response = await api.post("/api/course", values);
+    return {
+      data: response.data,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteCourse = async (id: string) => {
+  try {
+    const response = await api.delete(`/api/course/${id}`);
     return {
       data: response.data,
     };
