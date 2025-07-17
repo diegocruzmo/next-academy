@@ -48,3 +48,20 @@ export const deleteCourse = async (id: string) => {
     throw error;
   }
 };
+
+export const updateStateCourse = async (values: {
+  id: string;
+  state: boolean;
+}) => {
+  const { id, state } = values;
+  try {
+    const response = await api.patch(`/api/course/${id}`, {
+      state,
+    });
+    return {
+      data: response.data,
+    };
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import { Course } from "./Course";
+import { Course } from "./components";
 
 export default async function CoursePage({
   params,

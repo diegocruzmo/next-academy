@@ -1,6 +1,7 @@
 "use client";
 
 import useGetInfoCourse from "@/hooks/useInfoCourse";
+import { HeaderCourse } from "./HeaderCourse";
 
 export const Course = ({ courseId }: { courseId: string }) => {
   const { course } = useGetInfoCourse(courseId);
@@ -12,6 +13,9 @@ export const Course = ({ courseId }: { courseId: string }) => {
       </div>
     );
 
-  console.log(course?.title);
-  return <div>course</div>;
+  return (
+    <div className="m-6">
+      <HeaderCourse idCourse={course.id} isPublished={course?.isPublished} />
+    </div>
+  );
 };
