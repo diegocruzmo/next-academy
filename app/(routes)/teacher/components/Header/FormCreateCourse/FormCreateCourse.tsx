@@ -36,7 +36,7 @@ export const FormCreateCourse = () => {
     try {
       const res = await createCourse(values);
       toast("Course created successfully!");
-      router.push(`/teacher/courses/${res.data.id}`);
+      router.push(`/teacher/${res.data.id}`);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong!");

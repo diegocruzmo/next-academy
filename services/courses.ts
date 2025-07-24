@@ -49,18 +49,13 @@ export const deleteCourse = async (id: string) => {
   }
 };
 
-export const updateStateCourse = async (values: {
-  id: string;
-  state: boolean;
-}) => {
-  const { id, state } = values;
+export const updateCourse = async (
+  course: Partial<Course> & { id: string }
+) => {
   try {
-    const response = await api.patch(`/api/course/${id}`, {
-      state,
-    });
-    return {
-      data: response.data,
-    };
+    const { id, ...fieldsToUpdate } = course;
+    const response = await api.patch(`/api/course/${id}`, fieldsToUpdate);
+    return { data: response.data };
   } catch (error) {
     throw error;
   }

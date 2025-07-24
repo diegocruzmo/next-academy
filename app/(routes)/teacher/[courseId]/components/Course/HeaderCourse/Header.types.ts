@@ -1,4 +1,4 @@
 export type HeaderCourseProps = {
-  idCourse: string;
   isPublished: boolean;
+  courseId: string;
 };

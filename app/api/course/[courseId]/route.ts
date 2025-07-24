@@ -64,7 +64,10 @@ export async function PATCH(
     const { courseId } = await params;
 
     const body = await req.json();
-    const { state } = body;
+    const data = body;
+
+    console.log(courseId);
+    console.log(data);
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -76,7 +79,7 @@ export async function PATCH(
         id: courseId,
       },
       data: {
-        isPublished: state,
+        ...data,
       },
     });
 

@@ -2,6 +2,7 @@
 
 import useGetInfoCourse from "@/hooks/useInfoCourse";
 import { HeaderCourse } from "./HeaderCourse";
+import { FormCourse } from "./FormCourse";
 
 export const Course = ({ courseId }: { courseId: string }) => {
   const { course } = useGetInfoCourse(courseId);
@@ -15,7 +16,8 @@ export const Course = ({ courseId }: { courseId: string }) => {
 
   return (
     <div className="m-6">
-      <HeaderCourse idCourse={course.id} isPublished={course?.isPublished} />
+      <HeaderCourse isPublished={course.isPublished} courseId={courseId} />
+      <FormCourse course={course} />
     </div>
   );
 };

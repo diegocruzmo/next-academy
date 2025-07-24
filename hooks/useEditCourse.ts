@@ -1,12 +1,13 @@
-import { updateStateCourse } from "@/services/courses";
+import { updateCourse } from "@/services/courses";
+import { Course } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-function useEditStateCourse() {
+function useEditCourse() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (values: { id: string; state: boolean }) =>
-      updateStateCourse(values),
+    mutationFn: (course: Partial<Course> & { id: string }) =>
+      updateCourse(course),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["get-course"] });
     },
@@ -16,4 +17,4 @@ function useEditStateCourse() {
   });
 }
 
-export default useEditStateCourse;
+export default useEditCourse;
