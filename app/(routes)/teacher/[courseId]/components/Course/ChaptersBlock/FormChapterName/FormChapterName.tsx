@@ -17,9 +17,12 @@ import { Input } from "@/components/ui/input";
 import { FormChapterNameProps } from "./FormChapterName.types";
 import { formSchema } from "./FormChapterName.form";
 import { BookCheck } from "lucide-react";
+import useCreateChapter from "@/hooks/useCreateChapter";
+import { toast } from "sonner";
 
 export const FormChapterName = (props: FormChapterNameProps) => {
   const { courseId, setShowInputChapter } = props;
+  const { mutateAsync: createChapter } = useCreateChapter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -28,8 +31,13 @@ export const FormChapterName = (props: FormChapterNameProps) => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await createChapter({ ...values, courseId });
+      toast.success("Chapter created successfully!");
+    } catch {
+      toast.error("Something went wrong!");
+    }
     setShowInputChapter(false);
   }
 

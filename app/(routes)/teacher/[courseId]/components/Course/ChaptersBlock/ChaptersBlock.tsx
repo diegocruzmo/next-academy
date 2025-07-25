@@ -12,8 +12,6 @@ import { FormChapterName } from "./FormChapterName";
 
 export const ChaptersBlock = (props: ChaptersBlockProps) => {
   const { courseId, chapters } = props;
-
-  const [chaptersList, setChaptersList] = useState(chapters || []);
   const [showInputChapter, setShowInputChapter] = useState(false);
 
   return (
@@ -39,6 +37,12 @@ export const ChaptersBlock = (props: ChaptersBlockProps) => {
           courseId={courseId}
         />
       )}
+
+      {chapters?.map((chapter) => (
+        <p className="font-light text-sm" key={chapter.id}>
+          {chapter.title}
+        </p>
+      ))}
     </div>
   );
 };
