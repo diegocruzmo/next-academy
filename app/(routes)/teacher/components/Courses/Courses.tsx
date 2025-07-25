@@ -1,4 +1,5 @@
 "use client";
+
 import useInfoCourses from "@/hooks/useInfoCourses";
 import { CourseCard } from "./CourseCard";
 import { SkeletonCard } from "@/components/Shared";
