@@ -1,6 +1,6 @@
 import { formSchema } from "@/app/(routes)/teacher/components/Header/FormCreateCourse/FormCreateCourse.form";
 import api from "@/lib/axios";
-import { Course } from "@prisma/client";
+import { Chapter, Course } from "@prisma/client";
 import z from "zod";
 
 export const infoCourses = async (): Promise<{ data: Course[] }> => {
@@ -14,7 +14,13 @@ export const infoCourses = async (): Promise<{ data: Course[] }> => {
   }
 };
 
-export const infoCourse = async (id: string): Promise<{ data: Course }> => {
+export const infoCourse = async (
+  id: string
+): Promise<{
+  data: Course & {
+    chapters: Chapter[];
+  };
+}> => {
   try {
     const response = await api.get(`/api/course/${id}`);
     return {

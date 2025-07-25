@@ -44,13 +44,13 @@ export const CourseCard = (props: CourseCardProps) => {
             <div className="flex flex-col gap-1 items-start">
               <div className="flex gap-1 items-center text-sm mt-2">
                 <ChartNoAxesColumn className="w-4 h-4" />
-                <span>Level: {price}</span>
+                <span>Level:</span>
                 <span className="font-semibold">{level || "Beginner"}</span>
               </div>
 
               <div className="flex gap-1 items-center text-sm">
                 <DollarSign className="w-4 h-4" />
-                <span>Price: {price}</span>
+                <span>Price:</span>
                 <span className="font-semibold">{price || 0}</span>
               </div>
             </div>

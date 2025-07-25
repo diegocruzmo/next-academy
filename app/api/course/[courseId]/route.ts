@@ -20,6 +20,9 @@ export async function GET(
         userId: userId,
         id: courseId,
       },
+      include: {
+        chapters: true,
+      },
     });
 
     return NextResponse.json(course);

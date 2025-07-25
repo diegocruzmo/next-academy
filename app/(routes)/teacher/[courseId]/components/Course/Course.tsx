@@ -4,6 +4,8 @@ import useGetInfoCourse from "@/hooks/useInfoCourse";
 import { HeaderCourse } from "./HeaderCourse";
 import { FormCourse } from "./FormCourse";
 import { CourseImage } from "./CourseImage";
+import { CoursePrice } from "./CoursePrice";
+import { ChaptersBlock } from "./ChaptersBlock";
 
 export const Course = ({ courseId }: { courseId: string }) => {
   const { course } = useGetInfoCourse(courseId);
@@ -22,10 +24,12 @@ export const Course = ({ courseId }: { courseId: string }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
         <CourseImage courseId={courseId} courseImage={course.imageUrl} />
-        <p>Course Price</p>
+        <CoursePrice courseId={courseId} coursePrice={course.price} />
       </div>
 
-      <p>Course Chapters</p>
+      <div>
+        <ChaptersBlock courseId={courseId} chapters={course.chapters} />
+      </div>
     </div>
   );
 };

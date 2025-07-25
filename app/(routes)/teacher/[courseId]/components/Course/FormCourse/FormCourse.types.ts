@@ -4,5 +4,4 @@ export type FormCourseProps = {
   course: CourseWithRelations;
 };
 
-//type CourseWithRelations = Course & { chapters: Chapter[] };
-type CourseWithRelations = Course;
+type CourseWithRelations = Course & { chapters: Chapter[] };

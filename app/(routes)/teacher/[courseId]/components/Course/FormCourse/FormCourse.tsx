@@ -1,6 +1,6 @@
 "use client";
 
-import { Cog } from "lucide-react";
+import { Cog, Save } from "lucide-react";
 import { FormCourseProps } from "./FormCourse.types";
 import { TitleBlock } from "../TitleBlock";
 
@@ -63,7 +63,7 @@ export const FormCourse = ({ course }: FormCourseProps) => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
             <FormField
               control={form.control}
               name="title"
@@ -167,7 +167,9 @@ export const FormCourse = ({ course }: FormCourseProps) => {
               )}
             />
           </div>
-          <Button type="submit">Save</Button>
+          <Button variant={"outline"} size={"sm"} type="submit">
+            <Save /> Save
+          </Button>
         </form>
       </Form>
     </div>

@@ -24,7 +24,7 @@ export const CourseImage = ({ courseImage, courseId }: CourseImageProps) => {
   };
 
   return (
-    <div className="p-4 rounded-md h-fit border border-slate-500">
+    <div className="p-4 rounded-md h-fit border">
       <TitleBlock title="Course Image" icon={FileImage} />
 
       {isEditing ? (
